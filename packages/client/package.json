@@ -21,9 +21,16 @@
     "url": "git+https://github.com/freamee/aqv_module.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "build": "tsc",
+    "watch": "tsc --watch"
   },
   "bugs": {
     "url": "https://github.com/freamee/aqv_module/issues"
+  },
+  "devDependencies": {
+    "@citizenfx/client": "^2.0.5642-1"
+  },
+  "dependencies": {
+    "@aquiversdk/shared": "^1.0.1"
   }
 }
