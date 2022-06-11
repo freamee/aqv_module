@@ -4,4 +4,5 @@ module.exports = test;
 
 function test() {
     // TODO
+    console.log('asd');
 }

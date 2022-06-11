@@ -1,11 +1,11 @@
-# `@aquiver/test`
+# `@aquiversdk/test`
 
 > TODO: description
 
 ## Usage
 
 ```
-const test = require('@aquiver/test');
+const test = require('@aquiversdk/test');
 
 // TODO: DEMONSTRATE API
 ```

@@ -2,6 +2,6 @@
 
 const test = require('..');
 
-describe('@aquiver/test', () => {
+describe('@aquiversdk/test', () => {
     it('needs tests');
 });
