@@ -4,6 +4,9 @@ type SupportedFrameworks = typeof DefinedFrameworks[number];
 export class Config {
     private static _framework: SupportedFrameworks = 'CUSTOM';
 
+    /** Set extra variable(s) which attached to the current resource. */
+    public static ResourceExtra: Record<string, any> = {};
+
     /** Get selected Framework type. */
     public static get Framework() {
         return this._framework;
