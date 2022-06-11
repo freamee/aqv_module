@@ -10,8 +10,10 @@
     "lib": "lib",
     "test": "__tests__"
   },
+  "types": "lib",
   "files": [
-    "lib"
+    "lib",
+    "src"
   ],
   "publishConfig": {
     "access": "public"
