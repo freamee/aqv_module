@@ -20,3 +20,5 @@ class Config {
 }
 exports.Config = Config;
 Config._framework = 'CUSTOM';
+/** Set extra variable(s) which attached to the current resource. */
+Config.ResourceExtra = {};
