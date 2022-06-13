@@ -1,4 +1,4 @@
-# aqv_module
+# Aquiver module
 
 ## Compile .ts files
 ```
@@ -9,3 +9,5 @@ lerna run build
 ```
 npm run publish
 ```
+
+More information: https://freamee.github.io/aquiver_module/about/
