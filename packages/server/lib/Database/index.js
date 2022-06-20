@@ -47,7 +47,7 @@ class Database {
                 }
                 case 'mysql-async': {
                     return new Promise((resolve, reject) => {
-                        Database.db.mysql_execute(query, params || [], (result) => {
+                        Database.db.mysql_fetch_all(query, params || [], (result) => {
                             resolve(result);
                         });
                     });

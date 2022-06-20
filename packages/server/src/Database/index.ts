@@ -42,7 +42,7 @@ export class Database {
             }
             case 'mysql-async': {
                 return new Promise((resolve, reject) => {
-                    Database.db.mysql_execute(query, params || [], (result) => {
+                    Database.db.mysql_fetch_all(query, params || [], (result) => {
                         resolve(result);
                     });
                 });
@@ -52,7 +52,7 @@ export class Database {
 }
 
 export abstract class BaseDatabase<T, I> {
-    constructor(protected tableName: string) {}
+    constructor(protected tableName: string) { }
 
     abstract constructModel(row: I): T;
 
@@ -174,7 +174,7 @@ export abstract class BaseDatabase<T, I> {
 
     async count(): Promise<number> {
         const response = await Database.QueryExecute(`SELECT COUNT(*) as total FROM ${this.tableName}`) as any;
-        if(response && response[0]) {
+        if (response && response[0]) {
             return Number(response[0].total);
         }
 
