@@ -1,4 +1,5 @@
 import { Vec3 } from '@aquiversdk/shared';
+
 import { Config } from '../config';
 import { Frameworks } from '../Frameworks';
 import { cfxPlayerExist } from '../Methods';
@@ -67,12 +68,12 @@ export class ServerPlayer<IServerVars, ISharedVars> {
         switch (Config.Framework) {
             case 'ESX_LEGACY': {
                 const Player = Frameworks.ESX.GetPlayerFromId(this.source);
-                Player.addInventoryItem(item, amount);
+                if (Player) Player.addInventoryItem(item, amount);
                 break;
             }
             case 'QBCORE': {
                 const Player = Frameworks.QBCore.Functions.GetPlayer(this.source);
-                Player.Functions.AddItem(item, amount, extra?.QBCore?.slot, extra?.QBCore?.metadata);
+                if (Player) Player.Functions.AddItem(item, amount, extra?.QBCore?.slot, extra?.QBCore?.metadata);
                 break;
             }
             case 'CUSTOM': {
@@ -98,12 +99,12 @@ export class ServerPlayer<IServerVars, ISharedVars> {
         switch (Config.Framework) {
             case 'ESX_LEGACY': {
                 const Player = Frameworks.ESX.GetPlayerFromId(this.source);
-                Player.removeInventoryItem(item, amount);
+                if (Player) Player.removeInventoryItem(item, amount);
                 break;
             }
             case 'QBCORE': {
                 const Player = Frameworks.QBCore.Functions.GetPlayer(this.source);
-                Player.Functions.RemoveItem(item, amount, extra?.QBCore?.slot);
+                if (Player) Player.Functions.RemoveItem(item, amount, extra?.QBCore?.slot);
                 break;
             }
             case 'CUSTOM': {
@@ -144,7 +145,7 @@ export class ServerPlayer<IServerVars, ISharedVars> {
         switch (Config.Framework) {
             case 'ESX_LEGACY': {
                 const Player = Frameworks.ESX.GetPlayerFromId(this.source);
-                return Player.getInventoryItem(item);
+                if (Player) return Player.getInventoryItem(item);
             }
             case 'QBCORE': {
                 const Player = Frameworks.QBCore.Functions.GetPlayer(this.source);
@@ -161,11 +162,15 @@ export class ServerPlayer<IServerVars, ISharedVars> {
         switch (Config.Framework) {
             case 'ESX_LEGACY': {
                 const Player = Frameworks.ESX.GetPlayerFromId(this.source);
-                return Player.getAccount(accountType).money ?? 0;
+                if (Player) return Player.getAccount(accountType).money ?? 0;
+
+                return 0;
             }
             case 'QBCORE': {
                 const Player = Frameworks.QBCore.Functions.GetPlayer(this.source);
-                return Player.Functions.GetMoney(accountType) ?? 0;
+                if (Player) return Player.Functions.GetMoney(accountType) ?? 0;
+
+                return 0;
             }
             case 'CUSTOM': {
                 return globalThis.exports[GetCurrentResourceName()].getAccountMoney(this.source, accountType) ?? 0;
@@ -189,12 +194,12 @@ export class ServerPlayer<IServerVars, ISharedVars> {
         switch (Config.Framework) {
             case 'ESX_LEGACY': {
                 const Player = Frameworks.ESX.GetPlayerFromId(this.source);
-                Player.addAccountMoney(accountType, amount);
+                if (Player) Player.addAccountMoney(accountType, amount);
                 break;
             }
             case 'QBCORE': {
                 const Player = Frameworks.QBCore.Functions.GetPlayer(this.source);
-                Player.Functions.AddMoney(accountType, amount, extra?.QBCore?.reason);
+                if (Player) Player.Functions.AddMoney(accountType, amount, extra?.QBCore?.reason);
                 break;
             }
             case 'CUSTOM': {
@@ -214,12 +219,12 @@ export class ServerPlayer<IServerVars, ISharedVars> {
         switch (Config.Framework) {
             case 'ESX_LEGACY': {
                 const Player = Frameworks.ESX.GetPlayerFromId(this.source);
-                Player.removeAccountMoney(accountType, amount);
+                if (Player) Player.removeAccountMoney(accountType, amount);
                 break;
             }
             case 'QBCORE': {
                 const Player = Frameworks.QBCore.Functions.GetPlayer(this.source);
-                Player.Functions.RemoveMoney(accountType, amount, extra?.QBCore?.reason);
+                if (Player) Player.Functions.RemoveMoney(accountType, amount, extra?.QBCore?.reason);
                 break;
             }
             case 'CUSTOM': {
@@ -246,12 +251,12 @@ export class ServerPlayer<IServerVars, ISharedVars> {
         switch (Config.Framework) {
             case 'ESX_LEGACY': {
                 const Player = Frameworks.ESX.GetPlayerFromId(this.source);
-                Player.setAccountMoney(accountType, amount);
+                if (Player) Player.setAccountMoney(accountType, amount);
                 break;
             }
             case 'QBCORE': {
                 const Player = Frameworks.QBCore.Functions.GetPlayer(this.source);
-                Player.Functions.SetMoney(accountType, amount, extra?.QBCore?.reason);
+                if (Player) Player.Functions.SetMoney(accountType, amount, extra?.QBCore?.reason);
                 break;
             }
             case 'CUSTOM': {
@@ -266,11 +271,15 @@ export class ServerPlayer<IServerVars, ISharedVars> {
         switch (Config.Framework) {
             case 'ESX_LEGACY': {
                 const Player = Frameworks.ESX.GetPlayerFromId(this.source);
-                return Player.getName();
+                if (Player) return Player.getName();
+
+                return "UNDEFINED_NAME";
             }
             case 'QBCORE': {
                 const Player = Frameworks.QBCore.Functions.GetPlayer(this.source);
-                return Player.PlayerData.charinfo.firstname + ' ' + Player.PlayerData.charinfo.lastname;
+                if (Player) return Player.PlayerData.charinfo.firstname + ' ' + Player.PlayerData.charinfo.lastname;
+
+                return "UNDEFINED_NAME";
             }
             case 'CUSTOM': {
                 return globalThis.exports[GetCurrentResourceName()].getRoleplayName(this.source) ?? 'UNDEFINED_NAME';
@@ -283,7 +292,7 @@ export class ServerPlayer<IServerVars, ISharedVars> {
         switch (Config.Framework) {
             case 'ESX_LEGACY': {
                 const Player = Frameworks.ESX.GetPlayerFromId(this.source);
-                return Player.identifier;
+                if (Player) return Player.identifier;
             }
             case 'QBCORE': {
                 return Frameworks.QBCore.Functions.GetIdentifier(this.source, 'license');
@@ -299,11 +308,11 @@ export class ServerPlayer<IServerVars, ISharedVars> {
         switch (Config.Framework) {
             case 'ESX_LEGACY': {
                 const Player = Frameworks.ESX.GetPlayerFromId(this.source);
-                return Player.getIdentifier();
+                if (Player) return Player.getIdentifier();
             }
             case 'QBCORE': {
                 const Player = Frameworks.QBCore.Functions.GetPlayer(this.source);
-                return Player.PlayerData.citizenid;
+                if (Player) return Player.PlayerData.citizenid;
             }
             case 'CUSTOM': {
                 return globalThis.exports[GetCurrentResourceName()].getUniqueId(this.source) ?? '';
@@ -316,7 +325,7 @@ export class ServerPlayer<IServerVars, ISharedVars> {
         switch (Config.Framework) {
             case 'ESX_LEGACY': {
                 const Player = Frameworks.ESX.GetPlayerFromId(this.source);
-                return Player.getGroup() == permissionGroup;
+                if (Player) return Player.getGroup() == permissionGroup;
             }
             case 'QBCORE': {
                 return Frameworks.QBCore.Functions.HasPermission(this.source, permissionGroup);
@@ -332,7 +341,7 @@ export class ServerPlayer<IServerVars, ISharedVars> {
         switch (Config.Framework) {
             case 'ESX_LEGACY': {
                 const Player = Frameworks.ESX.GetPlayerFromId(this.source);
-                Player.showNotification(message);
+                if (Player) Player.showNotification(message);
                 break;
             }
             case 'QBCORE': {
