@@ -63,12 +63,14 @@ class ServerPlayer {
         switch (config_1.Config.Framework) {
             case 'ESX_LEGACY': {
                 const Player = Frameworks_1.Frameworks.ESX.GetPlayerFromId(this.source);
-                Player.addInventoryItem(item, amount);
+                if (Player)
+                    Player.addInventoryItem(item, amount);
                 break;
             }
             case 'QBCORE': {
                 const Player = Frameworks_1.Frameworks.QBCore.Functions.GetPlayer(this.source);
-                Player.Functions.AddItem(item, amount, (_a = extra === null || extra === void 0 ? void 0 : extra.QBCore) === null || _a === void 0 ? void 0 : _a.slot, (_b = extra === null || extra === void 0 ? void 0 : extra.QBCore) === null || _b === void 0 ? void 0 : _b.metadata);
+                if (Player)
+                    Player.Functions.AddItem(item, amount, (_a = extra === null || extra === void 0 ? void 0 : extra.QBCore) === null || _a === void 0 ? void 0 : _a.slot, (_b = extra === null || extra === void 0 ? void 0 : extra.QBCore) === null || _b === void 0 ? void 0 : _b.metadata);
                 break;
             }
             case 'CUSTOM': {
@@ -88,12 +90,14 @@ class ServerPlayer {
         switch (config_1.Config.Framework) {
             case 'ESX_LEGACY': {
                 const Player = Frameworks_1.Frameworks.ESX.GetPlayerFromId(this.source);
-                Player.removeInventoryItem(item, amount);
+                if (Player)
+                    Player.removeInventoryItem(item, amount);
                 break;
             }
             case 'QBCORE': {
                 const Player = Frameworks_1.Frameworks.QBCore.Functions.GetPlayer(this.source);
-                Player.Functions.RemoveItem(item, amount, (_a = extra === null || extra === void 0 ? void 0 : extra.QBCore) === null || _a === void 0 ? void 0 : _a.slot);
+                if (Player)
+                    Player.Functions.RemoveItem(item, amount, (_a = extra === null || extra === void 0 ? void 0 : extra.QBCore) === null || _a === void 0 ? void 0 : _a.slot);
                 break;
             }
             case 'CUSTOM': {
@@ -133,7 +137,8 @@ class ServerPlayer {
         switch (config_1.Config.Framework) {
             case 'ESX_LEGACY': {
                 const Player = Frameworks_1.Frameworks.ESX.GetPlayerFromId(this.source);
-                return Player.getInventoryItem(item);
+                if (Player)
+                    return Player.getInventoryItem(item);
             }
             case 'QBCORE': {
                 const Player = Frameworks_1.Frameworks.QBCore.Functions.GetPlayer(this.source);
@@ -150,11 +155,15 @@ class ServerPlayer {
         switch (config_1.Config.Framework) {
             case 'ESX_LEGACY': {
                 const Player = Frameworks_1.Frameworks.ESX.GetPlayerFromId(this.source);
-                return (_a = Player.getAccount(accountType).money) !== null && _a !== void 0 ? _a : 0;
+                if (Player)
+                    return (_a = Player.getAccount(accountType).money) !== null && _a !== void 0 ? _a : 0;
+                return 0;
             }
             case 'QBCORE': {
                 const Player = Frameworks_1.Frameworks.QBCore.Functions.GetPlayer(this.source);
-                return (_b = Player.Functions.GetMoney(accountType)) !== null && _b !== void 0 ? _b : 0;
+                if (Player)
+                    return (_b = Player.Functions.GetMoney(accountType)) !== null && _b !== void 0 ? _b : 0;
+                return 0;
             }
             case 'CUSTOM': {
                 return (_c = globalThis.exports[GetCurrentResourceName()].getAccountMoney(this.source, accountType)) !== null && _c !== void 0 ? _c : 0;
@@ -172,12 +181,14 @@ class ServerPlayer {
         switch (config_1.Config.Framework) {
             case 'ESX_LEGACY': {
                 const Player = Frameworks_1.Frameworks.ESX.GetPlayerFromId(this.source);
-                Player.addAccountMoney(accountType, amount);
+                if (Player)
+                    Player.addAccountMoney(accountType, amount);
                 break;
             }
             case 'QBCORE': {
                 const Player = Frameworks_1.Frameworks.QBCore.Functions.GetPlayer(this.source);
-                Player.Functions.AddMoney(accountType, amount, (_a = extra === null || extra === void 0 ? void 0 : extra.QBCore) === null || _a === void 0 ? void 0 : _a.reason);
+                if (Player)
+                    Player.Functions.AddMoney(accountType, amount, (_a = extra === null || extra === void 0 ? void 0 : extra.QBCore) === null || _a === void 0 ? void 0 : _a.reason);
                 break;
             }
             case 'CUSTOM': {
@@ -191,12 +202,14 @@ class ServerPlayer {
         switch (config_1.Config.Framework) {
             case 'ESX_LEGACY': {
                 const Player = Frameworks_1.Frameworks.ESX.GetPlayerFromId(this.source);
-                Player.removeAccountMoney(accountType, amount);
+                if (Player)
+                    Player.removeAccountMoney(accountType, amount);
                 break;
             }
             case 'QBCORE': {
                 const Player = Frameworks_1.Frameworks.QBCore.Functions.GetPlayer(this.source);
-                Player.Functions.RemoveMoney(accountType, amount, (_a = extra === null || extra === void 0 ? void 0 : extra.QBCore) === null || _a === void 0 ? void 0 : _a.reason);
+                if (Player)
+                    Player.Functions.RemoveMoney(accountType, amount, (_a = extra === null || extra === void 0 ? void 0 : extra.QBCore) === null || _a === void 0 ? void 0 : _a.reason);
                 break;
             }
             case 'CUSTOM': {
@@ -217,12 +230,14 @@ class ServerPlayer {
         switch (config_1.Config.Framework) {
             case 'ESX_LEGACY': {
                 const Player = Frameworks_1.Frameworks.ESX.GetPlayerFromId(this.source);
-                Player.setAccountMoney(accountType, amount);
+                if (Player)
+                    Player.setAccountMoney(accountType, amount);
                 break;
             }
             case 'QBCORE': {
                 const Player = Frameworks_1.Frameworks.QBCore.Functions.GetPlayer(this.source);
-                Player.Functions.SetMoney(accountType, amount, (_a = extra === null || extra === void 0 ? void 0 : extra.QBCore) === null || _a === void 0 ? void 0 : _a.reason);
+                if (Player)
+                    Player.Functions.SetMoney(accountType, amount, (_a = extra === null || extra === void 0 ? void 0 : extra.QBCore) === null || _a === void 0 ? void 0 : _a.reason);
                 break;
             }
             case 'CUSTOM': {
@@ -237,11 +252,15 @@ class ServerPlayer {
         switch (config_1.Config.Framework) {
             case 'ESX_LEGACY': {
                 const Player = Frameworks_1.Frameworks.ESX.GetPlayerFromId(this.source);
-                return Player.getName();
+                if (Player)
+                    return Player.getName();
+                return "UNDEFINED_NAME";
             }
             case 'QBCORE': {
                 const Player = Frameworks_1.Frameworks.QBCore.Functions.GetPlayer(this.source);
-                return Player.PlayerData.charinfo.firstname + ' ' + Player.PlayerData.charinfo.lastname;
+                if (Player)
+                    return Player.PlayerData.charinfo.firstname + ' ' + Player.PlayerData.charinfo.lastname;
+                return "UNDEFINED_NAME";
             }
             case 'CUSTOM': {
                 return (_a = globalThis.exports[GetCurrentResourceName()].getRoleplayName(this.source)) !== null && _a !== void 0 ? _a : 'UNDEFINED_NAME';
@@ -254,7 +273,8 @@ class ServerPlayer {
         switch (config_1.Config.Framework) {
             case 'ESX_LEGACY': {
                 const Player = Frameworks_1.Frameworks.ESX.GetPlayerFromId(this.source);
-                return Player.identifier;
+                if (Player)
+                    return Player.identifier;
             }
             case 'QBCORE': {
                 return Frameworks_1.Frameworks.QBCore.Functions.GetIdentifier(this.source, 'license');
@@ -270,11 +290,13 @@ class ServerPlayer {
         switch (config_1.Config.Framework) {
             case 'ESX_LEGACY': {
                 const Player = Frameworks_1.Frameworks.ESX.GetPlayerFromId(this.source);
-                return Player.getIdentifier();
+                if (Player)
+                    return Player.getIdentifier();
             }
             case 'QBCORE': {
                 const Player = Frameworks_1.Frameworks.QBCore.Functions.GetPlayer(this.source);
-                return Player.PlayerData.citizenid;
+                if (Player)
+                    return Player.PlayerData.citizenid;
             }
             case 'CUSTOM': {
                 return (_a = globalThis.exports[GetCurrentResourceName()].getUniqueId(this.source)) !== null && _a !== void 0 ? _a : '';
@@ -287,7 +309,8 @@ class ServerPlayer {
         switch (config_1.Config.Framework) {
             case 'ESX_LEGACY': {
                 const Player = Frameworks_1.Frameworks.ESX.GetPlayerFromId(this.source);
-                return Player.getGroup() == permissionGroup;
+                if (Player)
+                    return Player.getGroup() == permissionGroup;
             }
             case 'QBCORE': {
                 return Frameworks_1.Frameworks.QBCore.Functions.HasPermission(this.source, permissionGroup);
@@ -302,7 +325,8 @@ class ServerPlayer {
         switch (config_1.Config.Framework) {
             case 'ESX_LEGACY': {
                 const Player = Frameworks_1.Frameworks.ESX.GetPlayerFromId(this.source);
-                Player.showNotification(message);
+                if (Player)
+                    Player.showNotification(message);
                 break;
             }
             case 'QBCORE': {
