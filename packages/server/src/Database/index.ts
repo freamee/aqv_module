@@ -52,7 +52,7 @@ export class Database {
 }
 
 export abstract class BaseDatabase<T, I> {
-    constructor(protected tableName: string) { }
+    constructor(public tableName: string) { }
 
     abstract constructModel(row: I): T;
 
@@ -123,6 +123,17 @@ export abstract class BaseDatabase<T, I> {
         if (typeof d.limit === 'number' && d.limit > 0) {
             qryString += ' ';
             qryString += `LIMIT ${d.limit}`;
+        }
+
+        return this.query(qryString);
+    }
+
+    deleteAll(limit?: number) {
+        let qryString = `DELETE FROM ${this.tableName}`;
+        qryString += " ";
+
+        if (typeof limit === 'number' && limit > 0) {
+            qryString += `LIMIT ${limit}`;
         }
 
         return this.query(qryString);
