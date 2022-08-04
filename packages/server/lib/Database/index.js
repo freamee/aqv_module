@@ -131,6 +131,14 @@ class BaseDatabase {
         }
         return this.query(qryString);
     }
+    deleteAll(limit) {
+        let qryString = `DELETE FROM ${this.tableName}`;
+        qryString += " ";
+        if (typeof limit === 'number' && limit > 0) {
+            qryString += `LIMIT ${limit}`;
+        }
+        return this.query(qryString);
+    }
     delete(d) {
         let qryString = `DELETE FROM ${this.tableName}`;
         qryString += ' ';

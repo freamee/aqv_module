@@ -5,7 +5,7 @@ export declare class Database {
     static QueryExecute(query: string, params?: any[]): Promise<any>;
 }
 export declare abstract class BaseDatabase<T, I> {
-    protected tableName: string;
+    tableName: string;
     constructor(tableName: string);
     abstract constructModel(row: I): T;
     query(query: string): Promise<T[]>;
@@ -22,6 +22,7 @@ export declare abstract class BaseDatabase<T, I> {
         find?: Array<keyof I>;
         limit?: number;
     }): Promise<T[]>;
+    deleteAll(limit?: number): Promise<T[]>;
     delete(d: {
         where: Partial<I>;
         limit?: number;
