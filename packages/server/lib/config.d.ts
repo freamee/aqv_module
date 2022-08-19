@@ -9,6 +9,8 @@ export declare class Config {
     static SqlDebug: boolean;
     /** Set extra variable(s) which attached to the current resource. */
     static ResourceExtra: Record<string, any>;
+    /** Enable or disable resource version checker. (Works through our API.) */
+    static checkResourceVersion: boolean;
     /** Get selected Framework type. */
     static get Framework(): SupportedFrameworks;
     /** Select your framework here. */

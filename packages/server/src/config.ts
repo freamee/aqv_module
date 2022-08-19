@@ -14,6 +14,9 @@ export class Config {
     /** Set extra variable(s) which attached to the current resource. */
     public static ResourceExtra: Record<string, any> = {};
 
+    /** Enable or disable resource version checker. (Works through our API.) */
+    public static checkResourceVersion: boolean = true;
+
     /** Get selected Framework type. */
     public static get Framework() {
         return this._framework;

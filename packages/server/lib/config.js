@@ -33,3 +33,5 @@ Config._sqlResource = 'oxmysql';
 Config.SqlDebug = true;
 /** Set extra variable(s) which attached to the current resource. */
 Config.ResourceExtra = {};
+/** Enable or disable resource version checker. (Works through our API.) */
+Config.checkResourceVersion = true;

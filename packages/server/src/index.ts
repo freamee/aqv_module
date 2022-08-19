@@ -4,3 +4,4 @@ export * from './Aquiver';
 export * from './Database';
 export * from './Events';
 export * from "./Methods";
+export * from "./VersionChecker";

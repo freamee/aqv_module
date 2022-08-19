@@ -33,6 +33,7 @@
     "@citizenfx/server": "^2.0.5642-1"
   },
   "dependencies": {
-    "@aquiversdk/shared": "^1.0.6"
+    "@aquiversdk/shared": "^1.0.6",
+    "axios": "^0.27.2"
   }
 }

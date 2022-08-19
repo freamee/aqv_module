@@ -20,3 +20,4 @@ __exportStar(require("./Aquiver"), exports);
 __exportStar(require("./Database"), exports);
 __exportStar(require("./Events"), exports);
 __exportStar(require("./Methods"), exports);
+__exportStar(require("./VersionChecker"), exports);
