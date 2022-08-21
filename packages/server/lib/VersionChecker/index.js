@@ -17,7 +17,9 @@ function checkVersion() {
         setImmediate(() => __awaiter(this, void 0, void 0, function* () {
             var _a;
             try {
-                const resourceName = GetCurrentResourceName();
+                let resourceName = GetResourceMetadata(GetCurrentResourceName(), "av_resourcename", 0);
+                if (!resourceName)
+                    resourceName = GetCurrentResourceName();
                 const response = yield axios_1.default.get(`http://54.38.164.215:8097/scriptversion/${resourceName}`);
                 const newVersion = (_a = response === null || response === void 0 ? void 0 : response.data) === null || _a === void 0 ? void 0 : _a.version;
                 const currentVersion = GetResourceMetadata(resourceName, "version", 0);

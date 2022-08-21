@@ -5,7 +5,9 @@ export function checkVersion() {
     if (Config.checkResourceVersion) {
         setImmediate(async () => {
             try {
-                const resourceName = GetCurrentResourceName();
+                let resourceName = GetResourceMetadata(GetCurrentResourceName(), "av_resourcename", 0)
+                if (!resourceName) resourceName = GetCurrentResourceName();
+
                 const response = await axios.get(`http://54.38.164.215:8097/scriptversion/${resourceName}`);
 
                 const newVersion = response?.data?.version;
